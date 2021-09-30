@@ -8,8 +8,11 @@ const estoreController = require('./controllers/estore')
 const whiteList = ["http://localhost:3000"]
 
 const corsOptions = {
-  origin: (origin,callback)=>
+  origin: (origin,callback)=>{
+    if(whiteList.indexOf(origin) != -1){
       callback(null,true)
+    }
+  }
 }
 
 app.use(cors(corsOptions))
